@@ -1,18 +1,69 @@
+from Cliente import Cliente
+from Historico import Historico
+
+
 class Conta:
-    saldo: float
-    numero: int
-    agencia: str
-    # cliente: Cliente
-    # historico: Historico
+    _saldo: float
+    _numero: int
+    _agencia: str
+    _cliente: Cliente
+    _historico: Historico
 
+    def __init__(self, numero: int, cliente: Cliente):
+        self._saldo = 0
+        self._numero = numero
+        self._agencia = "0001"
+        self._cliente = cliente
+        self._historico = Historico()
+
+    @classmethod
+    def nova_conta(cls, cliente: Cliente, numero: int):
+        return cls(numero, cliente)
+
+    @property
     def saldo(self) -> float:
-        pass
+        return self._saldo
 
-    # def nova_conta(self, cliente: Cliente, numero: int) -> Conta:
-    #     pass
+    @property
+    def numero(self) -> int:
+        return self._numero
+
+    @property
+    def agencia(self) -> str:
+        return self._agencia
+
+    @property
+    def cliente(self) -> Cliente:
+        return self._cliente
+
+    @property
+    def historico(self) -> Historico:
+        return self._historico
 
     def sacar(self, valor: float) -> bool:
-        pass
+        saldo = self.saldo
+        excedeu_saldo = valor > saldo
+
+        if excedeu_saldo:
+            print('Operação Falhou!')
+            print('Saldo insuficiente.')
+        elif valor > 0:
+            self._saldo -= valor
+            print('Saque realizado com sucesso!')
+            return True
+        else:
+            print('Operação falhou!')
+            print('O valor informado é inválido.')
+
+        return False
 
     def depositar(self, valor: float) -> bool:
-        pass
+        if valor > 0:
+            self._saldo += valor
+            print('Depósito Realizado com sucesso!')
+        else:
+            print('Operação falhou!')
+            print('O valor informado é inválido.')
+            return False
+
+        return True
