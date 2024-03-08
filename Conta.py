@@ -1,15 +1,8 @@
-from Cliente import Cliente
 from Historico import Historico
 
 
 class Conta:
-    _saldo: float
-    _numero: int
-    _agencia: str
-    _cliente: Cliente
-    _historico: Historico
-
-    def __init__(self, numero: int, cliente: Cliente):
+    def __init__(self, numero, cliente):
         self._saldo = 0
         self._numero = numero
         self._agencia = "0001"
@@ -17,30 +10,30 @@ class Conta:
         self._historico = Historico()
 
     @classmethod
-    def nova_conta(cls, cliente: Cliente, numero: int):
+    def nova_conta(cls, cliente, numero):
         return cls(numero, cliente)
 
     @property
-    def saldo(self) -> float:
+    def saldo(self):
         return self._saldo
 
     @property
-    def numero(self) -> int:
+    def numero(self):
         return self._numero
 
     @property
-    def agencia(self) -> str:
+    def agencia(self):
         return self._agencia
 
     @property
-    def cliente(self) -> Cliente:
+    def cliente(self):
         return self._cliente
 
     @property
-    def historico(self) -> Historico:
+    def historico(self):
         return self._historico
 
-    def sacar(self, valor: float) -> bool:
+    def sacar(self, valor):
         saldo = self.saldo
         excedeu_saldo = valor > saldo
 
@@ -57,7 +50,7 @@ class Conta:
 
         return False
 
-    def depositar(self, valor: float) -> bool:
+    def depositar(self, valor):
         if valor > 0:
             self._saldo += valor
             print('Depósito Realizado com sucesso!')

@@ -3,8 +3,6 @@ from Transacao import Transacao
 
 
 class Deposito(Transacao):
-    _valor: float
-
     def __init__(self, valor):
         self._valor = valor
 
@@ -12,7 +10,7 @@ class Deposito(Transacao):
     def valor(self) -> float:
         return self._valor
 
-    def registrar(self, conta: Conta):
+    def registrar(self, conta):
         sucesso_transacao = conta.depositar(self.valor)
 
         if sucesso_transacao:

@@ -1,13 +1,8 @@
 from Cliente import Cliente
-from datetime import date
 
 
 class PessoaFisica(Cliente):
-    cpf: str
-    nome: str
-    data_nascimento: date
-
-    def __init__(self, nome: str, data_nascimento: date, cpf: str, endereco: str):
+    def __init__(self, nome, data_nascimento, cpf, endereco):
         super().__init__(endereco)
 
         self.nome = nome

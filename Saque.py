@@ -1,10 +1,8 @@
-from Conta import Conta
 from Transacao import Transacao
+from Conta import Conta
 
 
 class Saque(Transacao):
-    _valor: float
-
     def __init__(self, valor):
         self._valor = valor
 
@@ -12,7 +10,7 @@ class Saque(Transacao):
     def valor(self) -> float:
         return self._valor
 
-    def registrar(self, conta: Conta):
+    def registrar(self, conta):
         sucesso_transacao = conta.sacar(self.valor)
 
         if sucesso_transacao:

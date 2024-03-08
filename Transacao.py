@@ -1,13 +1,12 @@
 from abc import ABC, abstractmethod
-from Conta import Conta
 
 
 class Transacao(ABC):
     @property
     @abstractmethod
-    def valor(self) -> float:
+    def valor(self):
         pass
 
     @abstractmethod
-    def registrar(self, conta: Conta):
+    def registrar(self, conta):
         pass
